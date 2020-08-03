@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './App.css';
 import Todos from './Components/Todos';
 
 class App extends Component {
@@ -7,17 +8,17 @@ class App extends Component {
       {
         id: 1,
         title: 'Take out the trash',
-        completed: false
+        completed: true
       },
       {
         id: 2,
         title: 'Dinner with wife',
-        completed: true
+        completed: false
       },
       {
         id: 3,
         title: 'Meeting with boss',
-        completed: false
+        completed: true
       }
     ]
   }
