@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import Todos from './Components/Todos';
 
+
 class App extends Component {
   state = {
     todos: [
       {
         id: 1,
         title: 'Take out the trash',
-        completed: true
+        completed: false
       },
       {
         id: 2,
@@ -18,13 +19,18 @@ class App extends Component {
       {
         id: 3,
         title: 'Meeting with boss',
-        completed: true
+        completed: false
       }
     ]
   }
 
   markComplete = (id) => {
-    console.log(id)
+    this.setState({ todos: this.state.todos.map(todo => {
+      if(todo.id === id){
+        todo.completed = !todo.completed
+      }
+      return todo;
+    }) });
   }
 
   render() {

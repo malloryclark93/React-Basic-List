@@ -8,7 +8,7 @@ export class TodoItem extends Component {
     background: '#f4f4f4',
     padding: '10px',
     borderBottom: '1px #ccc dotted',
-    textDecoration: this.props.completed ? 'line-through' : 'none'
+    textDecoration: this.props.todo.completed ? 'line-through' : 'none',
 
     }
   }
@@ -18,14 +18,15 @@ export class TodoItem extends Component {
   // }
 
   render() {
-    const { id, title } = this.props.todo;
+    const { id, title } = this.props.todo; // destructuring
     return (
       <div style={this.getStyle()}>
         <p>
           <input type="checkbox" onChange={this.props.markComplete.bind(this, id)}/> 
           {' '}
           
-          { title }</p>
+          { title }
+          </p>
       </div>
     )
   }
