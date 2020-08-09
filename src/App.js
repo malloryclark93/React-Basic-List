@@ -34,11 +34,20 @@ class App extends Component {
     }) });
   }
 
+  // Delete Todo
+  delTodo = (id) => {
+    // pass in state object - todos
+    // copy everything existing using the spread operator '...'
+    // filter each todo - return every todo where the ID is not equal to the ID thats passed in / filter out the one we are deleting
+    this.setState({ todos: [...this.state.todos.filter(todo => todo.id!== id)] });
+  }
+
+
   render() {
     // console.log(this.state.todos)
   return (
     <div className="App">
-      <Todos todos={this.state.todos} markComplete={this.markComplete}/>
+      <Todos todos={this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo}/>
     </div>
     );
   }
