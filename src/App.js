@@ -46,13 +46,25 @@ class App extends Component {
   }
 
 
+  //Add Todo 
+  addTodo = (title) => {
+    const newTodo = {
+      id: 4,
+      title: title, // title is equal to title passed in or we can use 'title,' for syntax as well 
+      completed: false
+    }
+   // spread operator copies what we have currently
+   this.setState({ todos: [...this.state.todos, newTodo]})
+
+  }
+
   render() {
     // console.log(this.state.todos)
   return (
     <div className="App">
       <div className="container">
       <Header />
-      <AddTodo />
+      <AddTodo addTodo={this.addTodo}/>
       <Todos todos={this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo}/>
       </div>
     </div>
