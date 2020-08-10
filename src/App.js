@@ -3,24 +3,24 @@ import './App.css';
 import Header from './Components/Layout/Header';
 import Todos from './Components/Todos';
 import AddTodo from './Components/AddTodo';
-
+// import uuid from 'uuid';
 
 
 class App extends Component {
   state = {
     todos: [
       {
-        id: 1,
+        id: 65747,
         title: 'Take out the trash',
         completed: false
       },
       {
-        id: 2,
+        id: 46363,
         title: 'Dinner with wife',
         completed: false
       },
       {
-        id: 3,
+        id: 45346,
         title: 'Meeting with boss',
         completed: false
       }
@@ -29,6 +29,7 @@ class App extends Component {
 
   // Toggle Complete
   markComplete = (id) => {
+    // console.log(id)
     this.setState({ todos: this.state.todos.map(todo => {
       if(todo.id === id){
         todo.completed = !todo.completed
@@ -49,7 +50,7 @@ class App extends Component {
   //Add Todo 
   addTodo = (title) => {
     const newTodo = {
-      id: 4,
+      id: 23435,
       title: title, // title is equal to title passed in or we can use 'title,' for syntax as well 
       completed: false
     }
