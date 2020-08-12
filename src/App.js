@@ -49,23 +49,36 @@ class App extends Component {
   }
 
   // Delete Todo
+  // Delete request
   delTodo = (id) => {
     // pass in state object - todos
     // copy everything existing using the spread operator '...'
     // filter each todo - return every todo where the ID is not equal to the ID thats passed in / filter out the one we are deleting
-    this.setState({ todos: [...this.state.todos.filter(todo => todo.id!== id)] });
+
+    // Delete on server, update UI
+    axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`).then(res => 
+    this.setState({ todos: [...this.state.todos.filter(todo => todo.id!== id)] }));
+
   }
 
 
   //Add Todo 
+  // Post request when you're adding something
+  // Gives a response, mimicks real B.E. server
   addTodo = (title) => {
-    const newTodo = {
-      id: 23435,
-      title: title, // title is equal to title passed in or we can use 'title,' for syntax as well 
-      completed: false
-    }
+    // const newTodo = {
+    //   id: 23435,
+    //   title: title, // title is equal to title passed in or we can use 'title,' for syntax as well 
+    //   completed: false
+    // }
    // spread operator copies what we have currently
-   this.setState({ todos: [...this.state.todos, newTodo]})
+
+   axios.post('https://jsonplaceholder.typicode.com/todos', { 
+    title,
+    completed: false
+  })
+    .then(res => this.setState({ todos: [...this.state.todos, res.data] }));
+    // ^^ made request to json placeholder, sent response back with todo info, (id), added to UI
 
   }
 
